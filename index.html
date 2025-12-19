@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Drish Quality Products</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
     body {
@@ -111,7 +112,9 @@
     <span class="old">₹3,499</span>
     <span class="new">₹1,599</span>
   </div>
-  <button class="buy" onclick="buyNow(1599)">Buy Now</button>
+  <button class="buy" onclick="buyNow(1599, 'Luxury Analog Watch')">
+  Buy Now
+</button>
   <button class="cod" onclick="orderCOD('Luxury Analog Watch',1599)">Cash on Delivery</button>
 </div>
 
@@ -122,7 +125,9 @@
     <span class="old">₹4,999</span>
     <span class="new">₹2,199</span>
   </div>
-  <button class="buy" onclick="buyNow(2199)">Buy Now</button>
+  <button class="buy" onclick="buyNow(1599, 'Luxury Analog Watch')">
+  Buy Now
+</button>
   <button class="cod" onclick="orderCOD('Stainless Steel Watch',2199)">Cash on Delivery</button>
 </div>
 
@@ -133,7 +138,9 @@
     <span class="old">₹2,999</span>
     <span class="new">₹1,299</span>
   </div>
-  <button class="buy" onclick="buyNow(1299)">Buy Now</button>
+  <button class="buy" onclick="buyNow(1599, 'Luxury Analog Watch')">
+  Buy Now
+</button>
   <button class="cod" onclick="orderCOD('Classic Black Watch',1299)">Cash on Delivery</button>
 </div>
 
@@ -144,9 +151,31 @@
 </footer>
 
 <script>
-  function buyNow(price) {
-  alert("Buy Now clicked\nAmount: ₹" + price);
-  }
+function buyNow(price, productName) {
+
+  var discount = price * 0.05; // 5% discount
+  var finalPrice = Math.round(price - discount);
+
+  var options = {
+    key: "rzp_test_RsL5q1IacpAAeJ",
+    amount: finalPrice * 100,
+    currency: "INR",
+    name: "Drish Quality Products",
+    description: productName + " (5% OFF)",
+    handler: function (response) {
+      alert(
+        "Payment Successful!\n\n" +
+        "Product: " + productName + "\n" +
+        "Paid: ₹" + finalPrice + "\n" +
+        "Payment ID: " + response.razorpay_payment_id
+      );
+    },
+    theme: {
+      color: "#e50914"
+    }
+  };
+
+  var rzp
 
   function orderCOD(product, price) {
     var phone = "919518671644";
