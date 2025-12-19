@@ -1,10 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Drish Quality Products</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #222;
+    }
+
+    h1 {
+      margin: 0;
+      letter-spacing: 3px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #111;
+      border-radius: 14px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .old {
+      text-decoration: line-through;
+      color: #888;
+      margin-right: 6px;
+    }
+
+    .new {
+      color: #e50914;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .buy {
+      background: #e50914;
+      color: #fff;
+    }
+
+    .cod {
+      background: #1faa59;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #222;
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Drish Quality Products</h1>
-  <p>Website reset successful.</p>
+
+<header>
+  <h1>DRISH</h1>
+  <div class="tagline">Premium Watches • Cash on Delivery Available</div>
+</header>
+
+<div class="container">
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Watch">
+    <h3>Luxury Analog Watch</h3>
+    <div class="price">
+      <span class="old">₹3,499</span>
+      <span class="new">₹1,599</span>
+    </div>
+    <button class="buy" onclick="buyNow()">Buy Now</button>
+    <button class="cod" onclick="orderCOD('Luxury Analog Watch',1599)">Cash on Delivery</button>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Drish Quality Products
+</footer>
+
+<script>
+  function buyNow() {
+    alert("Buy Now clicked (payment will be added next)");
+  }
+
+  function orderCOD(product, price) {
+    var phone = "919518671644";
+    var message =
+      "Hello Drish Quality Products\n\n" +
+      "🛒 Cash on Delivery Order\n" +
+      "📦 Product: " + product + "\n" +
+      "💰 Price: ₹" + price + "\n\n" +
+      "Please confirm availability.";
+
+    var url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
+</script>
+
 </body>
 </html>
